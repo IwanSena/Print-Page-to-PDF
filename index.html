@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panduan - Cetak Halaman ke PDF</title>
+    <title>Panduan - Cetak Halaman ke PDF (Bersih)</title>
     <style>
-        /* Gaya Tampilan (CSS) */
+        /* --- GAYA TAMPILAN (CSS VERSI AWAL) --- */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
@@ -30,10 +30,10 @@
         header h1 { margin: 0; font-size: 24px; }
         header p { margin: 10px 0 0; opacity: 0.9; }
         
-        /* Tombol Donasi */
+        /* Tombol Donasi (Kuning) */
         .btn-donate {
             display: inline-block;
-            background-color: #FFC107; /* Warna Kuning Emas */
+            background-color: #FFC107;
             color: #000;
             padding: 12px 25px;
             text-decoration: none;
@@ -45,23 +45,51 @@
         }
         .btn-donate:hover { transform: scale(1.05); }
 
+        /* Tombol Download (Biru - Baru) */
+        .btn-download {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .btn-download:hover { transform: scale(1.05); background-color: #0056b3; }
+
         .content { padding: 20px; }
         .section { margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
         .section:last-child { border-bottom: none; }
         
         h2 { color: #007BFF; font-size: 20px; margin-top: 0; }
-        h3 { font-size: 16px; color: #444; margin-bottom: 5px; }
+        h3 { font-size: 16px; color: #444; margin-bottom: 5px; font-weight: bold; }
         
         ol, ul { padding-left: 20px; }
         li { margin-bottom: 10px; }
 
+        /* Gaya untuk Tag Browser & Badge Versi */
+        .tag { background: #eee; padding: 4px 10px; border-radius: 15px; font-size: 12px; font-weight: bold; color: #555; margin-right: 5px; display: inline-block; margin-bottom: 5px;}
+        .ver-badge { background: #28a745; color: white; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+        .ver-date { font-size: 12px; color: #888; margin-left: 5px; }
+
+        /* Kotak Catatan */
         .note {
             background-color: #e7f5ff;
             padding: 15px;
             border-radius: 8px;
             font-size: 0.9em;
             border-left: 4px solid #007BFF;
+            margin-bottom: 15px;
         }
+
+        /* Gaya Pertanyaan Q&A */
+        .qa-item { margin-bottom: 20px; }
+        .qa-question { font-weight: bold; color: #333; display: block; margin-bottom: 5px; }
+        .qa-answer { color: #555; font-size: 0.95em; }
 
         footer {
             text-align: center;
@@ -70,14 +98,17 @@
             font-size: 12px;
             color: #666;
         }
+        footer a { color: #555; text-decoration: underline; }
         
-        /* Mode Gelap Otomatis (Jika HP pengguna mode gelap) */
+        /* Mode Gelap Otomatis */
         @media (prefers-color-scheme: dark) {
             body { background-color: #121212; color: #e0e0e0; }
             .container { background-color: #1e1e1e; }
-            h2 { color: #64b5f6; }
+            h2, .qa-question { color: #64b5f6; }
             .note { background-color: #2a2a2a; color: #ccc; }
+            .tag { background-color: #333; color: #ddd; }
             footer { background-color: #2a2a2a; border-top: 1px solid #444; }
+            footer a { color: #bbb; }
         }
     </style>
 </head>
@@ -86,21 +117,48 @@
 <div class="container">
     <header>
         <h1>Cetak Halaman ke PDF</h1>
-        <p>Ekstensi Praktis, Bersih, & Ringan.</p>
+        <p>Versi 2.4 | Gratis & Open Source (MIT)</p>
         
-        <a href="LINK_DONASI_ANDA" class="btn-donate" target="_blank">☕ Traktir Kopi (Donasi)</a>
+        <a href="https://linktr.ee/IwanSena" class="btn-donate" target="_blank">☕ Traktir Kopi (Donasi)</a>
+        
+        <div style="margin-top: 15px; font-size: 12px; opacity: 0.8;">
+            Ekstensi ini pertama kali diunggah di Firefox Add-ons.<br>
+            Untuk Google/Yandex Store, cek status di halaman GitHub ini.
+        </div>
     </header>
 
     <div class="content">
         
         <div class="section">
-            <h2>📖 Cara Menggunakan</h2>
+            <h2>🌐 Browser yang Didukung</h2>
+            <p>Ekstensi ini mendukung berbagai browser yang memiliki fitur add-on/ekstensi:</p>
+            <div>
+                <span class="tag">Kiwi Browser (Android)</span>
+                <span class="tag">Yandex Browser (Android)</span>
+                <span class="tag">Edge Canary (Android)</span>
+                <span class="tag">Firefox Nightly (Android)</span>
+                <span class="tag">Chrome/Edge/Brave (PC)</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📥 Cara Pasang Manual (ZIP)</h2>
+            <div class="note">
+                <strong>Info:</strong> Karena belum tersedia di Play Store, Anda perlu memasangnya secara manual. Aman & Mudah.
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <a href="cetak-pdf-terbaru.zip" class="btn-download" download>⬇️ Download Ekstensi (.ZIP)</a>
+            </div>
+
             <ol>
-                <li>Buka halaman web yang ingin Anda simpan (misal: Chord gitar, Artikel berita).</li>
-                <li>Tunggu sampai halaman selesai dimuat (loading selesai).</li>
-                <li>Buka menu browser, cari dan klik <strong>Cetak Halaman ke PDF</strong>.</li>
-                <li>Pilih opsi yang diinginkan, lalu tekan tombol <strong>Unduh</strong>.</li>
-                <li>Tunggu proses berjalan (lihat status di bawah tombol), PDF akan terunduh otomatis.</li>
+                <li>Klik tombol <strong>Download</strong> di atas.</li>
+                <li>Buka File Manager, cari file zip tersebut, lalu <strong>Ekstrak (Unzip)</strong> menjadi folder.</li>
+                <li>Buka browser (misal: Kiwi Browser).</li>
+                <li>Ketik di kolom alamat: <code>chrome://extensions</code></li>
+                <li>Aktifkan <strong>Mode Pengembang (Developer Mode)</strong>.</li>
+                <li>Klik tombol <strong>+ (Load Unpacked / Muat)</strong>.</li>
+                <li>Pilih folder hasil ekstrak tadi. Selesai!</li>
             </ol>
         </div>
 
@@ -111,32 +169,69 @@
             <p>Fitur ini otomatis mendeteksi dan menghapus iklan, tombol-tombol mengganggu, dan menu navigasi sebelum dicetak. Hasil PDF jadi lebih rapi dan enak dibaca.</p>
 
             <h3>2. Satu Halaman Panjang (Tanpa Potongan)</h3>
-            <p>Membuat PDF menjadi satu lembar panjang ke bawah (seperti screenshot panjang). </p>
+            <p>Membuat PDF menjadi satu lembar panjang ke bawah (seperti screenshot panjang).</p>
             <div class="note">
                 <strong>Penting:</strong> Saat mode ini aktif, pilihan "Ukuran Kertas" (A4/A5) tidak berlaku karena ukuran kertas akan menyesuaikan panjang website secara otomatis.
             </div>
         </div>
 
         <div class="section">
-            <h2>🔒 Kebijakan Privasi (Privacy Policy)</h2>
-            <p>Keamanan data Anda adalah prioritas kami.</p>
-            <ul>
-                <li><strong>100% Lokal:</strong> Proses pembuatan PDF terjadi sepenuhnya di dalam memori HP/Browser Anda.</li>
-                <li><strong>Tanpa Server:</strong> Kami tidak mengirimkan URL, isi halaman, atau data apapun ke server luar.</li>
-                <li><strong>Tanpa Pelacak:</strong> Ekstensi ini tidak memata-matai aktivitas browsing Anda.</li>
-            </ul>
+            <h2>❓ Tanya Jawab (Q&A)</h2>
+            
+            <div class="qa-item">
+                <span class="qa-question">Q: Mengapa download gagal atau tidak berjalan?</span>
+                <span class="qa-answer">A: Cobalah untuk <strong>memuat ulang (Refresh)</strong> halaman website. Terkadang memori browser penuh dan butuh penyegaran agar skrip pencetak berjalan lancar.</span>
+            </div>
+
+            <div class="qa-item">
+                <span class="qa-question">Q: Masih gagal download setelah refresh?</span>
+                <span class="qa-answer">A: Coba ubah tampilan browser Anda. Jika sedang di <strong>Tampilan Ponsel</strong>, ubah ke <strong>Situs Desktop</strong>, atau sebaliknya. Beberapa website memiliki struktur yang sulit dibaca di mode tertentu.</span>
+            </div>
+
+            <div class="qa-item">
+                <span class="qa-question">Q: Apa bedanya dengan fitur bawaan browser?</span>
+                <span class="qa-answer">A: Fitur bawaan sering error saat proses spooling atau hasilnya terpotong. Ekstensi ini memproses langsung di memori dan menyimpannya ke folder Download Internal. Tingkat keberhasilan hampir 100%.</span>
+            </div>
+
+            <div class="qa-item">
+                <span class="qa-question">Q: Apakah data saya aman?</span>
+                <span class="qa-answer">A: <strong>100% Aman.</strong> Ekstensi ini bekerja lokal (offline-capable) di HP Anda. Kami tidak punya server, jadi tidak ada data browsing yang dikirim keluar.</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📅 Riwayat Update</h2>
+            
+            <div style="margin-bottom: 15px;">
+                <span class="ver-badge">v2.4</span> <span class="ver-date">Terbaru</span>
+                <ul>
+                    <li>Penambahan dukungan multi-bahasa (Indonesia & Inggris).</li>
+                    <li>Perbaikan bug tombol download yang hilang.</li>
+                    <li>Optimalisasi fitur Satu Halaman Panjang.</li>
+                </ul>
+            </div>
+
+            <div>
+                <span class="ver-badge">v2.3</span>
+                <ul>
+                    <li>Perbaikan stabilitas pada halaman web berat.</li>
+                    <li>Penambahan indikator loading saat memproses PDF.</li>
+                </ul>
+            </div>
         </div>
 
         <div class="section">
             <h2>ℹ️ Kredit & Lisensi</h2>
-            <p>Ekstensi ini Gratis dan Open Source.</p>
-            <p>Ditenagai oleh pustaka <strong>html2pdf.js</strong> (Copyright © Erik Koopmans, MIT License).</p>
+            <p>Project ini Open Source di bawah Lisensi MIT.</p>
+            <p>Engine PDF menggunakan: <strong>html2pdf.js</strong> © Erik Koopmans.</p>
+            <p>Kebijakan Privasi: Kami menjamin tidak ada pengambilan data pengguna.</p>
         </div>
 
     </div>
 
     <footer>
-        <p>&copy; 2024 Dibuat dengan ❤️ untuk Komunitas.</p>
+        <p>&copy; 2024 Pengembang Ekstensi Indonesia.</p>
+        <p><a href="https://linktr.ee/IwanSena" target="_blank">Dukung Pengembang</a></p>
     </footer>
 </div>
 
