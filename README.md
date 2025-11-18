@@ -20,8 +20,10 @@ Ekstensi ringan dan open-source untuk mencetak halaman web menjadi PDF bersih ta
 ## ☕ Dukung Pengembang
 [Traktir Kopi](https://linktr.ee/IwanSena) jika kamu suka proyek ini!
 
-## 📄 Panduan Lengkap
-Lihat [index.html](./index.html) untuk panduan dan Q&A.
+## 📘 Panduan Lengkap
+Baca panduan lengkap di halaman web:  
+👉 [https://IwanSena.github.io/Print-Page-to-PDF/](https://IwanSena.github.io/Print-Page-to-PDF/)
+
 
 ---
 © 2024 Iwan Sena Pengembang Ekstensi Indonesia
